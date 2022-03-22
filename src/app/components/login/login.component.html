@@ -1,0 +1,28 @@
+<div class="d-flex justify-content-center mt-5">
+
+<!-- Grid row -->
+<div class="row">
+  <!-- Grid column -->
+  <div class="col-md-12">
+    <div class="card" style="width: 600px">
+      <div class="card-body">
+        <h3 class="text-center default-text py-3"><i class="fa fa-lock"></i> Login:</h3>
+        <!--Body-->
+        <div class="md-form">
+          <i class="fa fa-envelope prefix grey-text"></i>
+          <input type="text" #username  class="form-control" placeholder="" aria-describedby="helpId">
+          <label for="">Your email</label>
+        </div>
+        <div class="md-form">
+          <i class="fa fa-lock prefix grey-text"></i>
+          <input type="password" #password class="form-control" placeholder="" aria-describedby="helpId">
+          <label for="">Your password</label>
+        </div>
+        <div class="text-center">
+          <button class="btn btn-primary" (click)="OnLogin(username.value,password.value)">Đăng nhập</button>
+          <button style="margin: 20px" class="btn btn-warning">Đăng ký</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

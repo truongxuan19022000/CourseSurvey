@@ -1,0 +1,74 @@
+<!-- Button to Open the Modal -->
+<div class="container mt-5">
+  <div class="card">
+    <div class="d-flex justify-content-between p-3">
+      <div class="card border-info" style="width: 80rem;">
+        <div class="card-header">
+          <h1>Danh sách courses</h1>
+          <div class="d-flex justify-content-between">
+
+          <button [routerLink]="['add']" class="btn btn-success">Thêm khóa học</button>
+            <input name="name" [(ngModel)]="name" (ngModelChange)="Search()" type="text" class="form-control" style="width: 500px">
+          </div>
+        </div>
+
+        <div class="card-body">
+
+          <table class="table">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th (click)="sortByName()">Tên</th>
+              <th>Mô tả</th>
+              <th (click)="sortByPrice()">Giá</th>
+              <th>Chức năng</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr  *ngFor="let item of courses,let i=index">
+              <td  scope="row">{{i+1}}</td>
+              <td>{{ item.name }}</td>
+              <td>{{ item.description }}</td>
+              <td>{{ item.fee | currency : 'USD':true }}</td>
+              <td>
+                <button [routerLink]="['/courses',item.id,'edit']" style="margin-left: 20px" class="btn btn-info">Edit</button>
+              </td>
+              <td>
+                <button type="button"  class="btn btn-danger " data-toggle="modal" data-target="#modelId">
+                  Delete
+                </button>
+                <!-- Modal -->
+                <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title">Confirm Delete</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="container-fluid">
+                          Bạn có chắc chắn xóa bản ghi này
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger" (click)="onDelete(item.id)">Delete</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Button trigger modal -->
+
+

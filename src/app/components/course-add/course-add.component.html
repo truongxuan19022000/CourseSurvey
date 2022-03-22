@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="d-flex justify-content-between p-3">
+      <div class="card border-primary|secondary|success|danger|warning|info|dark mb-3" style="width: 60rem;">
+        <div class="card-header bg-success" ><span style="color:#ffffff;">Form Add</span></div>
+        <div class="card-body text-primary">
+          <form [formGroup]="AddForm" >
+            <div class="form-group">
+              <label for="">Tên khóa học</label>
+              <input formControlName="name" type="text" class="form-control"  placeholder="Input..." [(ngModel)]="courses.name" >
+              <span style="color: red;margin: 5px;" *ngIf="name && name.invalid && name.touched">Vui lòng nhập tên</span>
+            </div>
+            <div class="form-group">
+              <label for="">Mô tả</label>
+              <textarea formControlName="description" type="text" class="form-control" row="3"  [(ngModel)]="courses.description"></textarea>
+              <span style="color: red;margin: 5px;" *ngIf="description && description.invalid && description.touched">Nhập mô tả lớn hơn 3 ký tự</span>
+            </div>
+            <div class="form-group">
+              <label for="">Số lượng</label>
+              <input formControlName="fee" type="number" class="form-control"  [(ngModel)]="courses.fee">
+              <span style="color: red;margin: 5px;" *ngIf="fee && fee.invalid && fee.touched">Nhập number</span>
+            </div>
+            <button type="button" class="btn btn-primary mr-3" (click)="AddFormClick()">Submit</button>
+            <button  [routerLink]="['/courses']" type="button" class="btn btn-danger" >Back</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+

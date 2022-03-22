@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Courses-Management';
+  constructor(
+    public router: Router
+  ) {
+  }
+  Logout() {
+    if (localStorage.getItem('user')){
+      localStorage.removeItem('user');
+      this.router.navigate(['login'])
+    }
+  }
 }
