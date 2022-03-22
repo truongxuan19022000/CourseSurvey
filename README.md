@@ -1,1 +1,2 @@
 # CourseSurvey
+install npm
